@@ -7,13 +7,6 @@ function printMessage(msg){
 function clearMessages(){
 	document.getElementById('messages').innerHTML = '';
 }
-var computerMove;
-computerMove = 'kamień';
-printMessage('Zagrałem ' + computerMove + '! Jeśli Twój ruch to papier, to wygrywasz!');
-
-var playerMove;
-playerMove = 'papier';
-printMessage('Zagrałem ' + playerMove + '! Jeśli Twój ruch to kamień , to przegrywasz!')
 
 
 
@@ -30,3 +23,17 @@ if (randomNumber == '3') {
     computerMove = 'nożyce';
   }
 printMessage('Mój ruch: ' + computerMove);
+
+var playerMove, playerInput;
+playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
+console.log('Wpisana odpowiedź to: ' + playerInput);
+if (playerInput == '1') {
+  playerMove = 'kamień';
+} 
+if (playerInput == '2') {
+    playerMove = 'papier';
+}
+if (playerInput == '3') {
+    playerMove = 'nożyce';
+}  
+printMessage('Twój ruch: ' + playerMove);
