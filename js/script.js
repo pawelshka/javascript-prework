@@ -10,28 +10,19 @@ function clearMessages(){
 
 
 
-var argMoveId, argPlayerMove, argComputerMove, computerMove, playerMove, randomNumber, playerInput;
-
-/**
- * Describe this function...
- */
-function getMoveName(argMoveId) {
-  console.log('wywołano funkcję getMoveName z argumentem: ' + argMoveId);
-  if (argMoveId == 1) {
-    return 'kamień';
-  } 
-  else if (argMoveId == 2) {
-    return 'papier';
-  } 
-  else if (argMoveId == 3) {
-    return 'nożyce';
-  } 
-  
-    else {
-    printMessage('Nie znam ruchu o id ' + argMoveId + '. Zakładam, że chodziło o "kamień".');
-    return 'kamień';
+function playGame(playerInput) {
+  function getMoveName(argMoveId) {
+    if (argMoveId == 1) {
+      return 'kamień';
+    } 
+    else if (argMoveId == 2) {
+      return 'papier';
+    } 
+    else if (argMoveId == 3) {
+      return 'nożyce';
+    } 
+    
   }
-}
 
 /**
  * Describe this function...
@@ -56,34 +47,25 @@ function displayResult(argPlayerMove, argComputerMove) {
   }
   printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
 }
-playerMove = argButtonName;
-console.log('wybór ruchu gracza to: ' + playerInput);
 
-console.log('ruch gracza to: ' + playerMove);
-randomNumber = Math.floor(Math.random() * 3 + 1);
-console.log('wylosowana liczba to: ' + randomNumber);
-computerMove = getMoveName(randomNumber);
-console.log('ruch komputera to: ' + computerMove);
+var randomNumber = Math.floor(Math.random() * 3 + 1);
+var computerMove = getMoveName(randomNumber);
+var playerMove = getMoveName(playerInput)
+
 displayResult(playerMove, computerMove);
-
-var buttonRock;
-// tu będą wymienione pozostałe zmienne guzików, np. buttonRock
-
-buttonRock = document.getElementById('button-rock');
-// tu będą kolejne linie kodu, w których do zmiennych będą przypisane elementy znalezione po id
-
-function buttonClicked(argButtonName){
-    clearMessages();
-    console.log(argButtonRock + ' został kliknięty");
-
-    // tu znajdzie się cała dotychczasowa zawartość pliku js/script.js
-    // czyli efekt ćwiczenia z poprzedniego submodułu
-    // z drobną zmianą dot. zmiennej playerMove (wspomnieliśmy o tym powyżej)
 }
 
+var buttonRock = document.getElementById('button-rock');
 buttonRock.addEventListener('click', function(){
-    buttonClicked('button-rock')
+  playGame('1')
 });
 
-// tu będą kolejne powiązania guzików z funkcją buttonClicked
-// (każda z innym argumentem)
+var buttonRock = document.getElementById('button-paper');
+buttonRock.addEventListener('click', function(){
+  playGame('2')
+});
+
+var buttonRock = document.getElementById('button-scissors');
+buttonRock.addEventListener('click', function(){
+  playGame('3')
+});
